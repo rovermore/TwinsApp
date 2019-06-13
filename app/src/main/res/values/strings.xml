@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">TwinsApp</string>
+
+    <string-array name="familly_array">
+        <item>Madre</item>
+        <item>Padre</item>
+        <item>Abuel@</item>
+        <item>Ti@</item>
+        <item>Pareja</item>
+        <item>Amig@</item>
+    </string-array>
+
+    <string-array name="baby_sex_array">
+        <item>Niño</item>
+        <item>Niña</item>
+        <item>Gemelos</item>
+        <item>Mellizos</item>
+        <item>Desconocido</item>
+    </string-array>
+
+    <string-array name="unity_array">
+        <item>kg/cm</item>
+        <item>lb/in</item>
+    </string-array>
+
+    <string-array name="country_array">
+        <item>España</item>
+        <item>Europa</item>
+        <item>Otros</item>
+    </string-array>
+
+    <string name="intro_string">Por favor, tómate un minuto para personalizar tu aplicación</string>
+
+    <string name="name_edit_text">Nombre</string>
+</resources>
