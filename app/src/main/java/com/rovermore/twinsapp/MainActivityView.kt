@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
+import com.rovermore.twinsapp.settings.SettingsView
 import kotlinx.android.synthetic.main.activity_main_view.*
 
 class MainActivityView : AppCompatActivity() {
@@ -23,7 +24,7 @@ class MainActivityView : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_settings -> {
-                intent = Intent(applicationContext,SettingsView::class.java)
+                intent = Intent(applicationContext, SettingsView::class.java)
                 startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }

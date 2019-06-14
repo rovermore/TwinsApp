@@ -1,4 +1,4 @@
-package com.rovermore.twinsapp
+package com.rovermore.twinsapp.sharedpreferences
 
 import android.app.Application
 
