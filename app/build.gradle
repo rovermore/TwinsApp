@@ -34,4 +34,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     //implements anko for kotlin to make toast
     implementation "org.jetbrains.anko:anko-common:0.8.3"
+    implementation 'com.ogaclejapan.smarttablayout:library:1.7.0@aar'
 }

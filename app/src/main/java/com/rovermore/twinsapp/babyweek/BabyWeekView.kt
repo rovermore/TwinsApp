@@ -3,6 +3,7 @@ package com.rovermore.twinsapp.babyweek
 import android.os.Bundle
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
+import com.ogaclejapan.smarttablayout.SmartTabLayout
 import com.rovermore.twinsapp.R
 
 class BabyWeekView : AppCompatActivity() {
@@ -17,5 +18,9 @@ class BabyWeekView : AppCompatActivity() {
 
         pagerAdapter = BabyWeekPagerAdapter(supportFragmentManager, week = arrayListOf<Int>(1,2,3,4,5,6,7,8,9))
         viewPager.adapter = pagerAdapter
+
+        var viewPagertab: SmartTabLayout = findViewById(R.id.viewpagertab)
+        viewPagertab.setViewPager(viewPager)
+
     }
 }
