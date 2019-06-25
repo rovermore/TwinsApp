@@ -8,7 +8,7 @@ import com.rovermore.twinsapp.babyweek.BabyWeekView
 import com.rovermore.twinsapp.settings.SettingsView
 import kotlinx.android.synthetic.main.activity_main_view.*
 
-class MainActivityView : AppCompatActivity() {
+class MainView : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
