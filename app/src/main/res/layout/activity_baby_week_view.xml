@@ -14,7 +14,9 @@
         app:stl_indicatorColor="#40C4FF"
         app:stl_defaultTabTextColor="#FC000000"
         app:stl_indicatorInterpolation="smart"
-        app:stl_clickable="true"/>
+        app:stl_clickable="true"
+        app:stl_distributeEvenly="false"
+        app:stl_titleOffset = "auto_center"/>
 
 
     <android.support.v4.view.ViewPager

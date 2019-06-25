@@ -16,4 +16,8 @@ class BabyWeekPagerAdapter(fragmentManager: FragmentManager, private val week: A
     override fun getCount(): Int {
         return week.size
     }
+
+    override fun getPageTitle(position: Int): CharSequence? {
+        return position.toString()
+    }
 }
