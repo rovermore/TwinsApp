@@ -17,7 +17,7 @@ class BabyWeekView : AppCompatActivity() {
         setContentView(R.layout.activity_baby_week_view)
         viewPager = pager
 
-        pagerAdapter = BabyWeekPagerAdapter(supportFragmentManager, week = arrayListOf<Int>(1,2,3,4,5,6,7,8,9))
+        pagerAdapter = BabyWeekPagerAdapter(supportFragmentManager, week = arrayListOf<Int>(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16))
         viewPager.adapter = pagerAdapter
 
         var viewPagertab: SmartTabLayout = viewpagertab
