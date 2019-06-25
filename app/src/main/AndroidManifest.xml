@@ -17,8 +17,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".settings.SettingsView"></activity>
-        <activity android:name=".babyweek.BabyWeekView"></activity>
+        <activity android:name=".settings.SettingsView" />
+        <activity android:name=".babyweek.BabyWeekView" />
+        <activity android:name=".generalbabyview.GeneralBabyView"></activity>
     </application>
 
 </manifest>

@@ -35,4 +35,6 @@ dependencies {
     //implements anko for kotlin to make toast
     implementation "org.jetbrains.anko:anko-common:0.8.3"
     implementation 'com.ogaclejapan.smarttablayout:library:1.7.0@aar'
+    //implements recyclerview library
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
 }
