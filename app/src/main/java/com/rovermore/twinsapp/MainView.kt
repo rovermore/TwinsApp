@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import com.rovermore.twinsapp.babyweek.BabyWeekView
+import com.rovermore.twinsapp.generalbabyview.GeneralBabyView
 import com.rovermore.twinsapp.settings.SettingsView
 import kotlinx.android.synthetic.main.activity_main_view.*
 
@@ -17,7 +17,7 @@ class MainView : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
-                intent = Intent(applicationContext, BabyWeekView::class.java)
+                intent = Intent(applicationContext, GeneralBabyView::class.java)
                 startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }

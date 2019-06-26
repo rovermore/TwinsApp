@@ -7,11 +7,15 @@ import com.rovermore.twinsapp.R
 import com.rovermore.twinsapp.inflate
 import kotlinx.android.synthetic.main.general_baby_item.view.*
 
-class GeneralAdapter (private val titleList : ArrayList<String>) : RecyclerView.Adapter<GeneralAdapter.MyViewHolder>() {
+class GeneralAdapter (var titleList : ArrayList<String>, var itemClicked: OnItemClicked) : RecyclerView.Adapter<GeneralAdapter.MyViewHolder>() {
+
+    interface OnItemClicked {
+        fun itemClicked(title: String)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val inflatedView = parent.inflate(R.layout.general_baby_item, false)
-        return MyViewHolder(inflatedView)
+        return MyViewHolder(inflatedView, itemClicked, titleList)
     }
 
     override fun getItemCount() = titleList.size
@@ -22,10 +26,23 @@ class GeneralAdapter (private val titleList : ArrayList<String>) : RecyclerView.
     }
 
 
-    class MyViewHolder (v : View)  : RecyclerView.ViewHolder(v) {
+    class MyViewHolder (v : View, itemClicked: GeneralAdapter.OnItemClicked, titleList : ArrayList<String>)
+        : RecyclerView.ViewHolder(v), View.OnClickListener {
 
         var view : View = v
+        var mItemClicked = itemClicked
+        var mTitleList = titleList
 
+        init{
+            view.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            var position = adapterPosition
+            var title = mTitleList.get(position)
+            mItemClicked.itemClicked(title)
+
+        }
     }
 
 
