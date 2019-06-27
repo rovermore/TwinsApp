@@ -4,12 +4,12 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
 
-class BabyWeekPagerAdapter(fragmentManager: FragmentManager, private val week: ArrayList<Int>) :
+class BabyWeekPagerAdapter(fragmentManager: FragmentManager, private var week: ArrayList<Int>) :
         FragmentStatePagerAdapter(fragmentManager) {
 
     // 2
     override fun getItem(position: Int): Fragment {
-        return FragmentWeek.newInstance(week[position].toString())
+        return FragmentWeek.newInstance(week[position])
     }
 
     // 3
