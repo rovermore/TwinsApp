@@ -11,7 +11,7 @@ import com.rovermore.twinsapp.R
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+private const val DUTY_ARG = "duty_arg"
 
 /**
  * A simple [Fragment] subclass.
@@ -25,6 +25,7 @@ private const val ARG_PARAM2 = "param2"
 class FragmentWeek : Fragment() {
     // TODO: Rename and change types of parameters
     private var position: Int? = null
+    private var duty: String? = null
 
     //private var listener: OnFragmentInteractionListener? = null
 
@@ -32,6 +33,7 @@ class FragmentWeek : Fragment() {
         super.onCreate(savedInstanceState)
         arguments?.let {
             position = it.getInt(ARG_PARAM1)
+            duty = it.getString(DUTY_ARG)
         }
     }
 
@@ -40,8 +42,10 @@ class FragmentWeek : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_baby_week, container, false)
         var numberTextView = view.findViewById<TextView>(R.id.tv_number)
+        var dutyTextView = view.findViewById<TextView>(R.id.tv_duty)
         position = position?.minus(1)
         numberTextView.text = position.toString()
+        dutyTextView.text = duty
         return view
     }
 
@@ -56,10 +60,11 @@ class FragmentWeek : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(param1: Int) =
+        fun newInstance(param1: Int, duty: String) =
                 FragmentWeek().apply {
                     arguments = Bundle().apply {
                         putInt(ARG_PARAM1, param1)
+                        putString(DUTY_ARG, duty)
                     }
                 }
 
