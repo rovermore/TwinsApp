@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import com.rovermore.twinsapp.generalbabyview.GeneralBabyView
 import com.rovermore.twinsapp.settings.SettingsView
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main_view.*
 
 class MainView : AppCompatActivity() {
@@ -13,7 +14,6 @@ class MainView : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_home -> {
-                message.setText(R.string.title_home)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_dashboard -> {
@@ -22,7 +22,6 @@ class MainView : AppCompatActivity() {
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_notifications -> {
-                message.setText(R.string.title_notifications)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_settings -> {
@@ -39,5 +38,13 @@ class MainView : AppCompatActivity() {
         setContentView(R.layout.activity_main_view)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        val url = "https://firebasestorage.googleapis.com/v0/b/twinsapp-25d55.appspot.com/o/Foto%20Linkedin.png?alt=media&token=48813973-dca6-41a1-8a58-eea6414cbc76"
+
+        val builder = Picasso.Builder(this)
+
+        builder.listener(Picasso.Listener { picasso, uri, exception -> exception.printStackTrace();  })
+        builder.build().load(url).into(iv_picture_download_test)
     }
+
 }

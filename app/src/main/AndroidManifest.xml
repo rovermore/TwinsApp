@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.rovermore.twinsapp">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:name=".sharedpreferences.SharedApp"
@@ -18,8 +21,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".settings.SettingsView" />
-        <activity android:name=".babyweek.BabyWeekView" />
-        <activity android:name=".generalbabyview.GeneralBabyView"></activity>
+        <activity android:name=".babyweek.BabyWeekView"/>
+        <activity android:name=".generalbabyview.GeneralBabyView"/>
     </application>
 
 </manifest>
