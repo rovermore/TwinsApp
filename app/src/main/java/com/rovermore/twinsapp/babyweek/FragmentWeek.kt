@@ -43,7 +43,6 @@ class FragmentWeek : Fragment() {
         val view = inflater.inflate(R.layout.fragment_baby_week, container, false)
         var numberTextView = view.findViewById<TextView>(R.id.tv_number)
         var dutyTextView = view.findViewById<TextView>(R.id.tv_duty)
-        position = position?.minus(1)
         numberTextView.text = position.toString()
         dutyTextView.text = duty
         return view
