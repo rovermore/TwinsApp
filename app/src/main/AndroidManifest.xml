@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.rovermore.twinsapp">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".sharedpreferences.SharedApp"
@@ -21,8 +21,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".settings.SettingsView" />
-        <activity android:name=".babyweek.BabyWeekView"/>
-        <activity android:name=".generalbabyview.GeneralBabyView"/>
+        <activity android:name=".babyweek.BabyWeekView" />
+        <activity android:name=".generalbabyview.GeneralBabyView" />
+        <activity android:name=".profile.ProfileView"></activity>
     </application>
 
 </manifest>

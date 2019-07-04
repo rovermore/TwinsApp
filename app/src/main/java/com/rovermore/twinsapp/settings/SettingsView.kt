@@ -1,10 +1,12 @@
 package com.rovermore.twinsapp.settings
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.AdapterView
 import com.rovermore.twinsapp.R
+import com.rovermore.twinsapp.profile.ProfileView
 import com.rovermore.twinsapp.sharedpreferences.SharedApp
 import kotlinx.android.synthetic.main.activity_settings_view.*
 import org.jetbrains.anko.toast
@@ -21,6 +23,11 @@ class SettingsView : AppCompatActivity(), SettingsViewInterface {
         lateinit var locationSettings : String
 
         val settingsPresenterInterface : SettingsPresenterInterface = SettingsPresenter(this)
+
+        iv_profile.setOnClickListener({
+            val intent = Intent(applicationContext, ProfileView::class.java)
+            startActivity(intent)
+        })
 
         settingsPresenterInterface.fetchPreferences(
                 spinner_familly,
