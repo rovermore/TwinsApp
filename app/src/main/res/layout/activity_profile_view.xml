@@ -18,24 +18,28 @@
         android:layout_height="150dp"
         android:id="@+id/iv_user_image"
         android:visibility="invisible"
+        android:layout_gravity="center"
         android:src="@drawable/ic_account_circle_black_24dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv_user_name"
+        android:layout_gravity="center"
         android:visibility="invisible"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/tv_user_email"
+        android:layout_gravity="center"
         android:visibility="invisible"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/button_sign_out"
+        android:layout_gravity="center"
         android:visibility="invisible"/>
 
 </LinearLayout>

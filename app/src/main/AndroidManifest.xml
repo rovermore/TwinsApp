@@ -4,6 +4,8 @@
     package="com.rovermore.twinsapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
 
     <application
         android:name=".sharedpreferences.SharedApp"
@@ -23,7 +25,7 @@
         <activity android:name=".settings.SettingsView" />
         <activity android:name=".babyweek.BabyWeekView" />
         <activity android:name=".generalbabyview.GeneralBabyView" />
-        <activity android:name=".profile.ProfileView"></activity>
+        <activity android:name=".profile.ProfileView"/>
     </application>
 
 </manifest>
