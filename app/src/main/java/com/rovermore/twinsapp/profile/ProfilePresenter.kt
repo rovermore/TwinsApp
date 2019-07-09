@@ -23,7 +23,7 @@ class ProfilePresenter(private var activity: Activity,
 
     override fun getSignInClient() {
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("test")
+                .requestIdToken("91615322910-nceejsa2d9npl9mgv3g67682brs3qa41.apps.googleusercontent.com")
                 .requestEmail()
                 .build()
 

@@ -21,10 +21,6 @@
             "package_name": "com.rovermore.twinsapp",
             "certificate_hash": "7cf7109a9275be2fd7b4db9a4331e69890ef462a"
           }
-        },
-        {
-          "client_id": "91615322910-dkqbl0lhcj5ugfhlu0ut6p5bi6o6tfg0.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -34,12 +30,7 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "91615322910-dkqbl0lhcj5ugfhlu0ut6p5bi6o6tfg0.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
