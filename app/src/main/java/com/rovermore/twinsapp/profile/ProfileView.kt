@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.rovermore.twinsapp.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_profile_view.*
@@ -15,8 +16,10 @@ import kotlinx.android.synthetic.main.activity_profile_view.*
 
 class ProfileView : AppCompatActivity(), ProfileViewInterface {
 
+
     private val RC_SIGN_IN: Int = 1
     private lateinit var profilePresenterInterface: ProfilePresenterInterface
+    private lateinit var gso: GoogleSignInOptions
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +29,10 @@ class ProfileView : AppCompatActivity(), ProfileViewInterface {
 
         val alreadyloggedAccount = GoogleSignIn.getLastSignedInAccount(this)
 
-        profilePresenterInterface = ProfilePresenter(this, this)
+        profilePresenterInterface = ProfilePresenter(this)
+
+        profilePresenterInterface.getGoogleSignInOptions()
+
 
         if (alreadyloggedAccount != null) {
             setProfileViewsVisible()
@@ -37,10 +43,15 @@ class ProfileView : AppCompatActivity(), ProfileViewInterface {
         }
 
         button_sign_in.setOnClickListener({
-            profilePresenterInterface.getSignInClient()
+            profilePresenterInterface.getSignIntent()
         })
 
 
+    }
+
+    override fun onReceiveGoogleSignInOptions(gso: GoogleSignInOptions) {
+        this.gso = gso
+        profilePresenterInterface.getSignInClient(this,gso)
     }
 
     override fun onSignIntentReceived(intent: Intent) {

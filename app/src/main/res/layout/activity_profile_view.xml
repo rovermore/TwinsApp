@@ -40,6 +40,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/button_sign_out"
         android:layout_gravity="center"
-        android:visibility="invisible"/>
+        android:visibility="invisible"
+        android:text="Log Out"/>
 
 </LinearLayout>
