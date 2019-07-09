@@ -75,6 +75,8 @@ class ProfilePresenter(private var activity: Activity,
 
     }
 
+    //git test 2
+
     override fun getInforFromCurrentSession(account: GoogleSignInAccount) {
         onLoggedIn(account)
     }
