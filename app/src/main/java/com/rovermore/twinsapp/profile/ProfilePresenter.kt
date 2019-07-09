@@ -65,6 +65,8 @@ class ProfilePresenter(private var activity: Activity,
         }
     }
 
+    //test
+
     private fun onLoggedIn(account: GoogleSignInAccount) {
 
         var photoURL = account.photoUrl
