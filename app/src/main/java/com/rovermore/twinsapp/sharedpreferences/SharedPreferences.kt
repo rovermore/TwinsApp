@@ -4,7 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class SharedPreferences (context: Context){
+
     val SHARED_PREFERENCES_NAME = "shared_preferences_twin_app"
+    val SHARED_PREF_IMAGE_URL = "image_url"
     val SHARED_PREF_NAME = "name"
     val SHARED_PREF_FAMILIAR = "familiar"
     val SHARED_PREF_BABY_SEX = "baby_sex"
@@ -12,6 +14,10 @@ class SharedPreferences (context: Context){
     val SHARED_PREF_LOCATION = "location"
 
     val sharedPreferences : SharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, 0)
+
+    var imageUrl: String
+        get() = sharedPreferences.getString(SHARED_PREF_IMAGE_URL, "")
+        set(value) = sharedPreferences.edit().putString(SHARED_PREF_IMAGE_URL, value).apply()
 
     var name: String
         get() = sharedPreferences.getString(SHARED_PREF_NAME, "")

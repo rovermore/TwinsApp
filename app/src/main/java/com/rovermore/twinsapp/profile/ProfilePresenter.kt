@@ -2,6 +2,7 @@ package com.rovermore.twinsapp.profile
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -12,6 +13,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.rovermore.twinsapp.sharedpreferences.SharedApp
 
 
 class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):ProfilePresenterInterface {
@@ -79,6 +81,12 @@ class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):P
 
         profileViewInterface.onReceiveDataFromGoogleAccount(photoURL!!,profileName!!,profileEmail!!)
 
+        savePreferencesFromGoogleAccount(photoURL,profileName)
+    }
+
+    private fun savePreferencesFromGoogleAccount(photoURL: Uri, profileName: String) {
+        SharedApp.prefs.name = profileName
+        SharedApp.prefs.imageUrl = photoURL.toString()
     }
 
     //git test 2
@@ -92,6 +100,7 @@ class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):P
 
             override fun onComplete(p0: Task<Void>) {
                 profileViewInterface.onLogedOutFromAccount()
+                SharedApp.prefs.imageUrl = ""
             }
         })
     }

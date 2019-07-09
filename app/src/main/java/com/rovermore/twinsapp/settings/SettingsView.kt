@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import com.rovermore.twinsapp.R
 import com.rovermore.twinsapp.profile.ProfileView
 import com.rovermore.twinsapp.sharedpreferences.SharedApp
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_settings_view.*
 import org.jetbrains.anko.toast
 
@@ -80,12 +81,19 @@ class SettingsView : AppCompatActivity(), SettingsViewInterface {
             finish()})
     }
 
-    override fun onReceivedSavedPreferences(name: String, familiarPos: Int, sexPos: Int, unitPos: Int, locationPos: Int) {
+    override fun onReceivedSavedPreferences(name: String, familiarPos: Int, sexPos: Int,
+                                            unitPos: Int, locationPos: Int, photoUrl: String) {
         et_name.setText(name)
         spinner_familly.setSelection(familiarPos)
         spinner_sex.setSelection(sexPos)
         spinner_unit.setSelection(unitPos)
         spinner_country.setSelection(locationPos)
+
+        if(photoUrl.isNotBlank()){
+            Picasso.with(this).load(photoUrl).into(iv_profile)
+        } else {
+            iv_profile.setImageResource(R.drawable.ic_account_circle_black_24dp)
+        }
     }
 
 }

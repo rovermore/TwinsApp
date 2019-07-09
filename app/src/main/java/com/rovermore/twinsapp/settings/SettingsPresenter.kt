@@ -5,10 +5,11 @@ import com.rovermore.twinsapp.sharedpreferences.SharedApp
 
 class SettingsPresenter(var settingsViewInterface: SettingsViewInterface) : SettingsPresenterInterface {
 
-    private var nameSettings : String = "Pon tu nombre"
+    //private lateinit var nameSettings : String
 
     override fun savePreferences(name: String, familiar: String, sex: String, unit: String, location: String) {
-        SharedApp.prefs.name = name
+        if(name.isNotEmpty()){
+        SharedApp.prefs.name = name}
         SharedApp.prefs.familiar = familiar
         SharedApp.prefs.babySex = sex
         SharedApp.prefs.unit = unit
@@ -17,20 +18,23 @@ class SettingsPresenter(var settingsViewInterface: SettingsViewInterface) : Sett
 
     override fun fetchPreferences(familiarSpinner: Spinner, sexSpinner: Spinner,
                                   unitSpinner: Spinner, locationSpinner: Spinner) {
-        getName()
+        //getName()
         var familyPosition = getFamilySpinnerId(SharedApp.prefs.familiar,familiarSpinner)
         var sexPosition = getBabySexSpinnerId(SharedApp.prefs.babySex, sexSpinner)
         var unitPosition = getUnitSpinnerId(SharedApp.prefs.unit, unitSpinner)
         var locationPosition = getLocationSpinnerId(SharedApp.prefs.location, locationSpinner)
 
-        settingsViewInterface.onReceivedSavedPreferences(nameSettings,familyPosition, sexPosition, unitPosition, locationPosition)
+        var photoUrl = SharedApp.prefs.imageUrl
+        var nameSettings = SharedApp.prefs.name
+        settingsViewInterface.onReceivedSavedPreferences(nameSettings,familyPosition, sexPosition,
+                unitPosition, locationPosition, photoUrl)
     }
 
-    private fun getName() {
+    /*private fun getName() {
         if(SharedApp.prefs.name.isNotEmpty()){
             nameSettings = SharedApp.prefs.name
         }
-    }
+    }*/
 
     private fun getLocationSpinnerId(location: String, locationSpinner: Spinner): Int {
         var position = 0
