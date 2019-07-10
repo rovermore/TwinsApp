@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 class SharedPreferences (context: Context){
 
     val SHARED_PREFERENCES_NAME = "shared_preferences_twin_app"
+    val SHARED_PREF_TOKEN_ID = "token_id"
     val SHARED_PREF_IMAGE_URL = "image_url"
     val SHARED_PREF_NAME = "name"
     val SHARED_PREF_FAMILIAR = "familiar"
@@ -14,6 +15,10 @@ class SharedPreferences (context: Context){
     val SHARED_PREF_LOCATION = "location"
 
     val sharedPreferences : SharedPreferences = context.getSharedPreferences(SHARED_PREFERENCES_NAME, 0)
+
+    var tokenId: String
+        get() = sharedPreferences.getString(SHARED_PREF_TOKEN_ID, "")
+        set(value) = sharedPreferences.edit().putString(SHARED_PREF_TOKEN_ID, value).apply()
 
     var imageUrl: String
         get() = sharedPreferences.getString(SHARED_PREF_IMAGE_URL, "")

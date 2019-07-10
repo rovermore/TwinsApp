@@ -78,15 +78,17 @@ class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):P
         var photoURL = account.photoUrl
         var profileName = account.displayName
         var profileEmail = account.email
+        var tokenId = account.idToken
 
         profileViewInterface.onReceiveDataFromGoogleAccount(photoURL!!,profileName!!,profileEmail!!)
 
-        savePreferencesFromGoogleAccount(photoURL,profileName)
+        savePreferencesFromGoogleAccount(photoURL,profileName, tokenId!!)
     }
 
-    private fun savePreferencesFromGoogleAccount(photoURL: Uri, profileName: String) {
+    private fun savePreferencesFromGoogleAccount(photoURL: Uri, profileName: String, tokenId: String ) {
         SharedApp.prefs.name = profileName
         SharedApp.prefs.imageUrl = photoURL.toString()
+        SharedApp.prefs.tokenId = tokenId
     }
 
     //git test 2
@@ -101,6 +103,7 @@ class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):P
             override fun onComplete(p0: Task<Void>) {
                 profileViewInterface.onLogedOutFromAccount()
                 SharedApp.prefs.imageUrl = ""
+                SharedApp.prefs.tokenId = ""
             }
         })
     }
