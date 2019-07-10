@@ -89,6 +89,7 @@ class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):P
         SharedApp.prefs.name = profileName
         SharedApp.prefs.imageUrl = photoURL.toString()
         SharedApp.prefs.tokenId = tokenId
+        Log.d(TAG,"The user token is ${tokenId}")
     }
 
     //git test 2
