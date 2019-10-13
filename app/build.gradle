@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -20,6 +22,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+//This is to implement Dagger 2
+kapt {
+    generateStubs = true
 }
 
 dependencies {
@@ -48,6 +54,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:11.8.0'
     //implements a library to make circular imageViews
     implementation 'de.hdodenhof:circleimageview:3.0.0'
+
+    //Dagger 2 libary
+    implementation 'com.google.dagger:dagger:2.16'
+    kapt "com.google.dagger:dagger-compiler:2.13"
+    implementation 'com.google.dagger:dagger-android:2.16'
+    implementation 'com.google.dagger:dagger-android-support:2.16'
+    // If you use the support libraries
+    kapt "com.google.dagger:dagger-android-processor:2.13"
 }
 
 apply plugin: 'com.google.gms.google-services'

@@ -15,7 +15,7 @@ class BabyWeekPagerAdapter(fragmentManager: FragmentManager, private var weekArr
 
     // 3
     override fun getCount(): Int {
-        var size = weekArrayList!!.size
+        val size = weekArrayList!!.size
         if(size!=0)return size
         return 0
     }

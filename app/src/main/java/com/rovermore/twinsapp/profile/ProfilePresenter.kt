@@ -13,7 +13,9 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
-import com.rovermore.twinsapp.sharedpreferences.SharedApp
+import com.rovermore.twinsapp.TwinsApp
+import com.rovermore.twinsapp.sharedpreferences.SharedPreferences
+import javax.inject.Inject
 
 
 class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):ProfilePresenterInterface {
@@ -21,6 +23,13 @@ class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):P
     private val TAG = ProfilePresenter::class.java.name
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    init{
+        TwinsApp.daggerAppComponent().inject(this)
+    }
 
     override fun getGoogleSignInOptions() {
 
@@ -38,7 +47,7 @@ class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):P
     }
 
     override fun getSignIntent() {
-        var intent = googleSignInClient.signInIntent
+        val intent = googleSignInClient.signInIntent
 
         profileViewInterface.onSignIntentReceived(intent)
     }
@@ -75,10 +84,10 @@ class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):P
 
     private fun onLoggedIn(account: GoogleSignInAccount) {
 
-        var photoURL = account.photoUrl
-        var profileName = account.displayName
-        var profileEmail = account.email
-        var tokenId = account.idToken
+        val photoURL = account.photoUrl
+        val profileName = account.displayName
+        val profileEmail = account.email
+        val tokenId = account.idToken
 
         profileViewInterface.onReceiveDataFromGoogleAccount(photoURL!!,profileName!!,profileEmail!!)
 
@@ -86,9 +95,9 @@ class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):P
     }
 
     private fun savePreferencesFromGoogleAccount(photoURL: Uri, profileName: String, tokenId: String ) {
-        SharedApp.prefs.name = profileName
-        SharedApp.prefs.imageUrl = photoURL.toString()
-        SharedApp.prefs.tokenId = tokenId
+        sharedPreferences.name = profileName
+        sharedPreferences.imageUrl = photoURL.toString()
+        sharedPreferences.tokenId = tokenId
         Log.d(TAG,"The user token is ${tokenId}")
     }
 
@@ -103,8 +112,9 @@ class ProfilePresenter(private var profileViewInterface: ProfileViewInterface):P
 
             override fun onComplete(p0: Task<Void>) {
                 profileViewInterface.onLogedOutFromAccount()
-                SharedApp.prefs.imageUrl = ""
-                SharedApp.prefs.tokenId = ""
+                sharedPreferences.imageUrl = ""
+                sharedPreferences.tokenId = ""
+                Log.d(TAG,"The user token is ${sharedPreferences.tokenId}")
             }
         })
     }

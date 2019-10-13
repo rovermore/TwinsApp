@@ -1,38 +1,46 @@
 package com.rovermore.twinsapp.settings
 
 import android.widget.Spinner
-import com.rovermore.twinsapp.sharedpreferences.SharedApp
+import com.rovermore.twinsapp.TwinsApp
+import com.rovermore.twinsapp.sharedpreferences.SharedPreferences
+import javax.inject.Inject
 
 class SettingsPresenter(var settingsViewInterface: SettingsViewInterface) : SettingsPresenterInterface {
 
     //private lateinit var nameSettings : String
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
+
+    init{
+        TwinsApp.daggerAppComponent().inject(this)
+    }
 
     override fun savePreferences(name: String, familiar: String, sex: String, unit: String, location: String) {
         if(name.isNotEmpty()){
-        SharedApp.prefs.name = name}
-        SharedApp.prefs.familiar = familiar
-        SharedApp.prefs.babySex = sex
-        SharedApp.prefs.unit = unit
-        SharedApp.prefs.location = location
+            sharedPreferences.name = name}
+        sharedPreferences.familiar = familiar
+        sharedPreferences.babySex = sex
+        sharedPreferences.unit = unit
+        sharedPreferences.location = location
     }
 
     override fun fetchPreferences(familiarSpinner: Spinner, sexSpinner: Spinner,
                                   unitSpinner: Spinner, locationSpinner: Spinner) {
         //getName()
-        var familyPosition = getFamilySpinnerId(SharedApp.prefs.familiar,familiarSpinner)
-        var sexPosition = getBabySexSpinnerId(SharedApp.prefs.babySex, sexSpinner)
-        var unitPosition = getUnitSpinnerId(SharedApp.prefs.unit, unitSpinner)
-        var locationPosition = getLocationSpinnerId(SharedApp.prefs.location, locationSpinner)
+        var familyPosition = getFamilySpinnerId(sharedPreferences.familiar,familiarSpinner)
+        var sexPosition = getBabySexSpinnerId(sharedPreferences.babySex, sexSpinner)
+        var unitPosition = getUnitSpinnerId(sharedPreferences.unit, unitSpinner)
+        var locationPosition = getLocationSpinnerId(sharedPreferences.location, locationSpinner)
 
-        var photoUrl = SharedApp.prefs.imageUrl
-        var nameSettings = SharedApp.prefs.name
+        var photoUrl = sharedPreferences.imageUrl
+        var nameSettings = sharedPreferences.name
         settingsViewInterface.onReceivedSavedPreferences(nameSettings,familyPosition, sexPosition,
                 unitPosition, locationPosition, photoUrl)
     }
 
     /*private fun getName() {
-        if(SharedApp.prefs.name.isNotEmpty()){
-            nameSettings = SharedApp.prefs.name
+        if(TwinsApp.prefs.name.isNotEmpty()){
+            nameSettings = TwinsApp.prefs.name
         }
     }*/
 

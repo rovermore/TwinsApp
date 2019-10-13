@@ -12,9 +12,9 @@ class BabyWeekPresenter(var babyWeekViewInterface: BabyWeekViewInterface): BabyW
         myDb.collection("test")
                 .get().addOnSuccessListener {
                     it.forEach {
-                        var duty: String = it.get("weekDuty") as String
-                        var weekNumber: Long = it.get("weekNumber") as Long
-                        var test = Test(duty, weekNumber)
+                        val duty: String = it.get("weekDuty") as String
+                        val weekNumber: Long = it.get("weekNumber") as Long
+                        val test = Test(duty, weekNumber)
                         testArrayList?.add(test)
                     }
                     if(testArrayList.isEmpty()){

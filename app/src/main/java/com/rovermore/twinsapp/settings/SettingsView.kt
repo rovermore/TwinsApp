@@ -6,17 +6,24 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.AdapterView
 import com.rovermore.twinsapp.R
+import com.rovermore.twinsapp.TwinsApp
 import com.rovermore.twinsapp.profile.ProfileView
-import com.rovermore.twinsapp.sharedpreferences.SharedApp
+import com.rovermore.twinsapp.sharedpreferences.SharedPreferences
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_settings_view.*
 import org.jetbrains.anko.toast
+import javax.inject.Inject
 
 class SettingsView : AppCompatActivity(), SettingsViewInterface {
+
+    @Inject
+    lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings_view)
+
+        TwinsApp.daggerAppComponent().inject(this)
 
         lateinit var familySettings : String
         lateinit var sexSettings : String
@@ -75,8 +82,8 @@ class SettingsView : AppCompatActivity(), SettingsViewInterface {
             settingsPresenterInterface.savePreferences(et_name.text.toString(), familySettings, sexSettings, unitSettings, locationSettings)
 
             toast("Tu nombre es " +
-                "${SharedApp.prefs.name} y eres el  ${SharedApp.prefs.familiar} de ${SharedApp.prefs.babySex}. " +
-                "Mediremos su evolución en ${SharedApp.prefs.unit}, mientras estés en ${SharedApp.prefs.location} ")
+                "${sharedPreferences.name} y eres el  ${sharedPreferences.familiar} de ${sharedPreferences.babySex}. " +
+                "Mediremos su evolución en ${sharedPreferences.unit}, mientras estés en ${sharedPreferences.location} ")
 
             finish()})
     }
